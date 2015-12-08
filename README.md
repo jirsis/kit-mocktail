@@ -10,7 +10,7 @@ La presentación está disponible en la url [KIT MockTail](https://jirsis.github
 ## Código de la presentación
 
 ```
-git clone https://github.com/jirsis/mocktail.git
+git clone https://github.com/jirsis/kit-mocktail.git
 git checkout gh-pages
 bower install reveal.js
 ```
