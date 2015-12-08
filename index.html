@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>MockTail</title>
+
+<meta name="description" content="MockTail">
+<meta name="author" content="Iñaki Reta Sabarrós">
+<meta name="author" content="Raúl Gundín ">
+
+<link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+<link rel="stylesheet" href="bower_components/reveal.js/css/theme/serif.css" id="theme">
+</head>
+
+<!--
+<section data-markdown>
+  <script type="text/template">
+   ### Lo más probable es...  !-- .element: class="fragment" data-fragment-index="1" --
+   ![last jenga](img/last-jenga.png)
+   #### que estemos tocando una pieza del nivel inferior
+  </script>
+</section>
+-->
+
+<body>
+  <div class="reveal">
+  <div class="slides">
+    <section>
+      <h1>MockTail</h1>
+      <h3>¿Por qué no?</h3>
+      <img src="img/mocktail logo.png" width="30%"/>
+    </section>
+
+    <section>
+      <section data-markdown>
+        <script type="text/template">
+          ### ¿Cómo es el desarrollo?
+          * Tenemos que pintar unas pantallas <!-- .element: class="fragment" data-fragment-index="1" -->
+          * Con unos datos que vienen de un API <!-- .element: class="fragment" data-fragment-index="2" -->
+          * Este API recopila información de varios sistemas: IL, ENPS, HOST, ASO, servicios varios <!-- .element: class="fragment" data-fragment-index="3" -->
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ### ¿Cómo es *realmente* el desarrollo?
+          * Tenemos que pintar unas pantallas
+          * Con unos datos que vienen de un API
+          * Este API recopila información de varios sitemas
+          * La interfaz entre API y pantalla se realiza sobre la marcha <!-- .element: class="fragment" data-fragment-index="1" -->
+          * Los sistemas que alimentan al API nunca fallan &#128521;<!-- .element: class="fragment" data-fragment-index="2" -->
+          * Los sistemas que alimentan al API son estables &#128521;&#128521;<!-- .element: class="fragment" data-fragment-index="3" -->
+          * Todas las capas dan un muestreo de datos suficiente para replicar todo el comportamiento de la aplicación &#128521;&#128521;&#128521;<!-- .element: class="fragment" data-fragment-index="4" -->
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ### ¿Cómo hemos funcionado hasta ahora?
+          * Definición de interfaces
+            * Las pasamos por chat &#128563;&#128560;<!-- .element: class="fragment" data-fragment-index="1" -->
+            * Las pasamos por mail &#128546;<!-- .element: class="fragment" data-fragment-index="2" -->
+            * Las documentamos en un word &#128548;&#128545;<!-- .element: class="fragment" data-fragment-index="3" -->
+            * Las cambiamos sobre la marcha &#128584;&#128585;&#128586;&#128169;<!-- .element: class="fragment" data-fragment-index="4" -->
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ### ¿Cómo hemos funcionado hasta ahora?
+          * Los sistemas fallan o se caen
+            * Mandamos mails quejándonos &#128546;<!-- .element: class="fragment" data-fragment-index="1" -->
+            * No avanzamos desarrollos porque no integramos &#128548;&#128545;<!-- .element: class="fragment" data-fragment-index="2" -->
+            * Si no avanzamos desarrollos, no entregamos a tiempo &#128584;&#128585;&#128586;&#128169;<!-- .element: class="fragment" data-fragment-index="3" -->
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ### ¿Cómo hemos funcionado hasta ahora?
+          * Necesitamos ejemplos para cubrir la casuística<!-- .element: class="fragment" data-fragment-index="1" -->
+            * Alimentamos sistemas internos para validar comportamiento de front<!-- .element: class="fragment" data-fragment-index="2" -->
+            * Tenemos que suplicar para que nos generen estos datos<!-- .element: class="fragment" data-fragment-index="3" -->
+            * Tenemos que hacer ofrendas a $deity para que nos mantengan actualizados los datos<!-- .element: class="fragment" data-fragment-index="4" -->
+        </script>
+      </section>
+      <section>
+          <h3>¿No estáis cansados?</h3>
+          <h2>¿Qué hacemos?</h2>
+      </section>
+      <section>
+        <img src="img/elefante.png" width="50%"/>
+        <h3>Ignorar el problema</h3>
+        <h4 class="fragment" data-fragment-index="1">no funciona</h4>
+      </section>
+      <section>
+        <img src="img/rabia.jpg" width="75%"/>
+        <h3>Enfadarnos</h3>
+        <h4 class="fragment" data-fragment-index="1">no funciona</h4>
+      </section>
+      <section>
+        <img src="img/posicionFetal.png" width="50%"/>
+        <h3>Shalalalá! Noooo! Primera base, segunda base…</h3>
+        <h4 class="fragment" data-fragment-index="1">no funciona</h4>
+      </section>
+      <section>
+        <h1>Entonces toca...</h1>
+        <img src="img/chimpance pensativo.jpg" width="30%"/>
+        <h2>Darle al coco</h2>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h2>¿Qué nos gustaría?</h2>
+        <ol>
+          <li class="fragment" data-fragment-index="1">Simular peticiones HTTP</li>
+          <li class="fragment" data-fragment-index="2">Simular cualquier verbo de HTTP</li>
+          <li class="fragment" data-fragment-index="3">Devolver json o html o pdf o lo que sea</li>
+          <li class="fragment" data-fragment-index="4">Poder definir las llamadas de forma fácil</li>
+          <li class="fragment" data-fragment-index="5">No tener que preparar el entregable para dar estos comportamientos</li>
+          <li class="fragment" data-fragment-index="6">Uso de piezas pensadas para documentar APIs</li>
+          <li class="fragment" data-fragment-index="7">Poder organizar el contenido</li>
+          <li class="fragment" data-fragment-index="8">Poder tenerlo disponible como SaaS</li>
+          <li class="fragment" data-fragment-index="9">Consumo de pocos recursos</li>
+        </ol>
+        <h3 class="fragment" data-fragment-index="10">¿Y si lo conseguimos?</h3>
+      </section>
+      <section>
+        <img src="img/shutUp.jpg" width="80%"/>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <img src="img/mocktail logo.png" width="65%"/>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ### ¿Cómo empiezo?
+          ~~~shell
+           git clone https://IgnacioReta_medianet_es@bitbucket.org/medianet/mocktail.git
+           cd mocktail
+           sudo npm install
+           bower install
+           node mocktail-app
+          ~~~
+                Si no tenéis acceso al repositorio, podéis solicitarlo a
+                vuestros responsables y seguro que os lo consiguen rápidamente.
+       </script>
+      </section>
+    </section>
+
+
+  </div>
+  </div>
+  <script type="text/javascript" src="bower_components/reveal.js/lib/js/head.min.js"></script>
+  <script type="text/javascript" src="bower_components/reveal.js/js/reveal.js"></script>
+
+  <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          keyboard: true,
+          center: true,
+          hideAddressBar: true,
+
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/none
+
+          dependencies: [
+  					{ src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+  					{ src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+  					{ src: 'bower_components/reveal.js/plugin/notes/notes.js' }
+  				]
+      });
+  </script>
+</body>
+</html>
